@@ -85,3 +85,8 @@ a {
 }
 
 pre.span6.prettyprint{margin-top: 10px;}
+
+h1 img {
+    max-width: 150px;
+    max-height: 150px;
+}
