@@ -179,7 +179,7 @@ if (isset($_POST['code'])) {
                         </a>
                         <i class="preview-snippet icon-plus-sign"></i>
                         <i class="remove-snippet icon icon-remove-sign"></i>
-                        <pre class="prettyprint linenums span6 lang-php" style="display: none;">${snippetCode}</pre>
+                        <xmp class="prettyprint linenums span6 lang-php" style="display: none;">${snippetCode}</xmp>
                     </li>
                 </script>
 
@@ -195,7 +195,7 @@ if (isset($_POST['code'])) {
     </div>
     <div class="row">
         <div class="span12">
-            <div class="output"><pre><?php echo $debugOutput ?></pre></div>
+            <div class="output"><xmp><?php echo $debugOutput ?></xmp></div>
         </div>
     </div>
     <div class="row">

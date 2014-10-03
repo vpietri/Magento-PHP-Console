@@ -72,7 +72,7 @@ var editor;
 
         $.post(params, { code: editor.getSession().getValue() }, function(res) {
             if (res.match(/#end-php-console-output#$/)) {
-                $('div.output').html('<pre class="prettyprint linenums">' + res.substring(0, res.length-24) + '</pre>');
+                $('div.output').html('<xmp class="prettyprint linenums">' + res.substring(0, res.length-24) + '</xmp>');
             } else {
                 $('div.output').html(res + "<br /><br /><em>Script ended unexpectedly.</em>");
             }
