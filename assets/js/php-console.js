@@ -98,6 +98,8 @@ var editor;
         editor.getSession().setTabSize(options.tabsize);
         editor.getSession().setUseSoftTabs(true);
 
+        editor.setFontSize(16);
+
         // events
         editor.getSession().selection.on('changeCursor', updateStatusBar);
         if (window.navigator.userAgent.indexOf('Opera/') === 0) {
