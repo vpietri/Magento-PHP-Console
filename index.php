@@ -121,6 +121,7 @@ if (isset($_POST['code'])) {
     <script src="./assets/js/php-console.js"></script>
     <script src="./assets/js/google-code-prettify/prettify.js"></script>
     <script src="./assets/js/storage.js"></script>
+    <script src="./assets/js/optionstorage.js"></script>
     <script src="./assets/js/bootstrap-dropdown.js"></script>
     <link rel="stylesheet" type="text/css" href="./assets/js/google-code-prettify/prettify.css" />
     <script>
@@ -261,6 +262,14 @@ if (isset($_POST['code'])) {
             </div>
         </div>
     </div>
+    <div class="editor-options">
+        Editor Font Size
+        <select class="editor-option-fontsize">
+            <?php for ($i = 10; $i <= 24; $i++) { ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+            <?php } ?> 
+        </select>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -270,6 +279,11 @@ if (isset($_POST['code'])) {
 
         TFSN.LocalStorageHelper = new TFSN.LocalStorageHelper();
         TFSN.LocalStorageHelper.initialize(localStorageKey);
+
+        EditorOptions.LocalStorageHelper = new EditorOptions.LocalStorageHelper();
+        EditorOptions.LocalStorageHelper.initialize('EditorOptions');
+
+        editorOptions = EditorOptions.LocalStorageHelper.getArrayOfStorage();
 
         $('#slideToggle').click(function() {
             $('#expandable').slideToggle();
@@ -281,7 +295,17 @@ if (isset($_POST['code'])) {
             $('#expand-snippets-icon').toggleClass('icon-minus-sign');
         });
 
-        $('.dropdown-toggle').dropdown()
+        $('.dropdown-toggle').dropdown();
+        
+        $('.editor-option-fontsize').on('change', function (e) {
+            e.preventDefault();
+            var newFontSize = $(this).val();
+
+            document.getElementById('editor').style.fontSize= newFontSize + 'px';
+
+            EditorOptions.LocalStorageHelper.arrayOfOptions = { 'fontSize' : newFontSize };
+            EditorOptions.LocalStorageHelper.setLocalStorage();
+        });
     });
 
 </script>

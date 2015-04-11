@@ -98,8 +98,6 @@ var editor;
         editor.getSession().setTabSize(options.tabsize);
         editor.getSession().setUseSoftTabs(true);
 
-        editor.setFontSize(16);
-
         // events
         editor.getSession().selection.on('changeCursor', updateStatusBar);
         if (window.navigator.userAgent.indexOf('Opera/') === 0) {
@@ -117,6 +115,11 @@ var editor;
                 $('form').submit();
             }
         });
+
+        if (editorOptions && editorOptions.fontSize) {
+            document.getElementById('editor').style.fontSize= editorOptions.fontSize + 'px';
+            document.getElementsByClassName('editor-option-fontsize')[0].value = editorOptions.fontSize;
+        }
     };
 
     $.console = function(settings) {
