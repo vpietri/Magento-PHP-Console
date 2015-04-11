@@ -122,9 +122,13 @@ var editor;
             }
         });
 
-        if (editorOptions && editorOptions.fontSize) {
-            document.getElementById('editor').style.fontSize= editorOptions.fontSize + 'px';
-            document.getElementsByClassName('editor-option-fontsize')[0].value = editorOptions.fontSize;
+        if (editorOptions) {
+            var fontSize = editorOptions.fontSize ? editorOptions.fontSize : '12';
+            var outputSelection = editorOptions.output ? editorOptions.output : 'html';
+
+            document.getElementById('editor').style.fontSize= fontSize + 'px';
+            document.getElementsByClassName('editor-option-fontsize')[0].value = fontSize;
+            document.getElementById('output_select').value = outputSelection;
         }
     };
 

@@ -10,7 +10,7 @@ EditorOptions.LocalStorageHelper.prototype = {
         this.eleToAttachTemplates = '#snippet-container';
         this.snippetsWrapper = '#snippets-wrapper';
         this.clearSnippetsBtn = '#clearSnippets';
-        this.arrayOfOptions = [];
+        this.optionsObject = {};
 
         this.loadLastSaved();
     },
@@ -22,7 +22,7 @@ EditorOptions.LocalStorageHelper.prototype = {
     },
 
     getArrayOfStorage: function(){
-        return (this.getLocalStorage()) ? JSON.parse(this.getLocalStorage()) : [];
+        return (this.getLocalStorage()) ? JSON.parse(this.getLocalStorage()) : {};
     },
 
     getLocalStorage: function(){
@@ -30,7 +30,7 @@ EditorOptions.LocalStorageHelper.prototype = {
     },
 
     setLocalStorage: function(){
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.arrayOfOptions));
+        localStorage.setItem(this.localStorageKey, JSON.stringify(this.optionsObject));
     },
 
     getUrlParam: function(name){

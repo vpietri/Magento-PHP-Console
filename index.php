@@ -296,6 +296,7 @@ if (isset($_POST['code'])) {
         EditorOptions.LocalStorageHelper.initialize('EditorOptions');
 
         editorOptions = EditorOptions.LocalStorageHelper.getArrayOfStorage();
+        EditorOptions.LocalStorageHelper.optionsObject = editorOptions;
 
         $('#slideToggle').click(function() {
             $('#expandable').slideToggle();
@@ -315,12 +316,13 @@ if (isset($_POST['code'])) {
 
             document.getElementById('editor').style.fontSize= newFontSize + 'px';
 
-            EditorOptions.LocalStorageHelper.arrayOfOptions = { 'fontSize' : newFontSize };
+            EditorOptions.LocalStorageHelper.optionsObject.fontSize = newFontSize;
             EditorOptions.LocalStorageHelper.setLocalStorage();
         });
 
         $('#output_select').on('change', function (e) {
             e.preventDefault();
+            var selection = $(this).val();
 
             if ($(this).val() == "html") {
                 $('.output.pre').show();
@@ -329,6 +331,9 @@ if (isset($_POST['code'])) {
                 $('.output.pre').hide();
                 $('.output.xmp').show();
             }
+
+            EditorOptions.LocalStorageHelper.optionsObject.output = selection;
+            EditorOptions.LocalStorageHelper.setLocalStorage();
         });
     });
 
