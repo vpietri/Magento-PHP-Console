@@ -5,11 +5,6 @@ EditorOptions.LocalStorageHelper = function() {};
 EditorOptions.LocalStorageHelper.prototype = {
     initialize: function(localStorageKey){
         this.localStorageKey = localStorageKey;
-        this.lastSavedStorageKey = 'LastSavedSnippet';
-        this.snippetsTemplate = '#snippetsTemplate';
-        this.eleToAttachTemplates = '#snippet-container';
-        this.snippetsWrapper = '#snippets-wrapper';
-        this.clearSnippetsBtn = '#clearSnippets';
         this.optionsObject = {};
 
         this.loadLastSaved();
