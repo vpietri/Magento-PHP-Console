@@ -181,6 +181,7 @@ if (isset($_POST['code'])) {
                         <i class="preview-snippet icon-plus-sign"></i>
                         <i class="remove-snippet icon icon-remove-sign"></i>
                         <xmp class="prettyprint linenums span6 lang-php" style="display: none;">${snippetCode}</xmp>
+                        <pre class="prettyprint linenums span6 lang-php" style="display: none;">${snippetCode}</pre>
                     </li>
                 </script>
 
@@ -196,7 +197,18 @@ if (isset($_POST['code'])) {
     </div>
     <div class="row">
         <div class="span12">
-            <div class="output"><xmp><?php echo $debugOutput ?></xmp></div>
+            <label for="output_select">Output:</label>
+            <select id="output_select">
+                <option value="html">HTML</option>
+                <option value="text">Text</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="output xmp" style="display: none;"><xmp><?php echo $debugOutput ?></xmp></div>
+            <div class="output pre"><pre><?php echo $debugOutput ?></pre></div>
+            <div class="output error" style="display: none;"><pre><?php echo $debugOutput ?></pre></div>
         </div>
     </div>
     <div class="row">
@@ -296,7 +308,7 @@ if (isset($_POST['code'])) {
         });
 
         $('.dropdown-toggle').dropdown();
-        
+
         $('.editor-option-fontsize').on('change', function (e) {
             e.preventDefault();
             var newFontSize = $(this).val();
@@ -305,6 +317,18 @@ if (isset($_POST['code'])) {
 
             EditorOptions.LocalStorageHelper.arrayOfOptions = { 'fontSize' : newFontSize };
             EditorOptions.LocalStorageHelper.setLocalStorage();
+        });
+
+        $('#output_select').on('change', function (e) {
+            e.preventDefault();
+
+            if ($(this).val() == "html") {
+                $('.output.pre').show();
+                $('.output.xmp').hide();
+            } else {
+                $('.output.pre').hide();
+                $('.output.xmp').show();
+            }
         });
     });
 

@@ -95,3 +95,8 @@ xmp {
     max-height: 500px;
     overflow-y: scroll;
 }
+
+pre {
+    max-height: 500px;
+    overflow-y: scroll;
+}
