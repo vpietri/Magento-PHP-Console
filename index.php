@@ -29,8 +29,15 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
     $siteDirectory = $projects->getDirectoryFromSiteName($site);
 
     $mageFile = $siteDirectory . 'app/Mage.php';
-    if(file_exists($mageFile)){
-        require_once $mageFile;
+    $webrootMageFile = $siteDirectory . 'webroot/app/Mage.php';
+    $existsMageFile = file_exists($mageFile);
+    $existsWebrootMageFile = file_exists($webrootMageFile);
+    if($existsMageFile || $existsWebrootMageFile){
+        if ($existsWebrootMageFile) {
+            require_once $webrootMageFile;
+        } else {
+            require_once $mageFile;
+        }
         Varien_Profiler::enable();
         Mage::setIsDeveloperMode(true);
         umask(0);
