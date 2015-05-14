@@ -11,7 +11,13 @@ class Projects {
     }
 
     public function getDirectoryFromSiteName($siteName = null){
-        return ($siteName) ? $this->_directory . $siteName . '/' : false;
+        if (!$siteName) {
+            return false;
+        }
+        if (is_dir($this->_directory . $siteName . '/webroot')) {
+            return $this->_directory . $siteName . '/webroot/';
+        }
+        return $this->_directory . $siteName . '/';
     }
 
 
