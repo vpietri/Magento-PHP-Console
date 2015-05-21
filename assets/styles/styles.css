@@ -90,3 +90,13 @@ h1 img {
     max-width: 150px;
     max-height: 150px;
 }
+
+xmp {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+pre {
+    max-height: 500px;
+    overflow-y: scroll;
+}
