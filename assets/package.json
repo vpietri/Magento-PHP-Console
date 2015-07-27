@@ -1,0 +1,27 @@
+{
+  "name": "Magento_PHP_Console",
+  "description": "PHP Debug Console",
+  "version": "1.0.0",
+  "contributors": {
+      "name": "Greg Harvell",
+      "email": "greg@blueacorn.com",
+      "web": "https://github.com/complexthings"
+  },
+  "author": {
+      "name": "Thomas Slade",
+      "email": "thomas@blueacorn.com",
+      "web": "https://github.com/twslade"
+  },
+  "homepage": "https://github.com/twslade/Magento-PHP-Console",
+  "devDependencies": {
+      "grunt": "*",
+      "autoprefixer-core": "*",
+      "grunt-postcss": "*",
+      "grunt-concurrent": "*",
+      "grunt-contrib-uglify": "*",
+      "grunt-contrib-watch": "*",
+      "grunt-sass": "*",
+      "time-grunt": "*",
+      "jit-grunt": "*"
+  }
+}
