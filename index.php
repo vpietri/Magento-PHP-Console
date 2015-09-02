@@ -31,7 +31,6 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
     $mageFile = $siteDirectory . 'app/Mage.php';
     if(file_exists($mageFile)){
         require_once $mageFile;
-        Varien_Profiler::enable();
         Mage::setIsDeveloperMode(true);
         umask(0);
         Mage::app((array_key_exists('isAdmin', $params) && $params['isAdmin']) ? 'admin' : '');
