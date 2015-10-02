@@ -59,6 +59,7 @@ var editor;
                 })
                 .prependTo('.output');
         }
+        prettyPrint();
     };
 
     /**
@@ -97,12 +98,17 @@ var editor;
         editor = ace.edit(options.editor);
 
         // set mode
-        PhpMode = require("ace/mode/php").Mode;
-        editor.getSession().setMode(new PhpMode());
+        // PhpMode = require("ace/mode/php").Mode;
+        // editor.getSession().setMode(new PhpMode());
+        editor.setTheme("ace/theme/tomorrow_night");
+        editor.getSession().setMode({path:"ace/mode/php", inline: true});
 
         // tab size
         editor.getSession().setTabSize(options.tabsize);
         editor.getSession().setUseSoftTabs(true);
+
+        // Theme
+        
 
         // events
         editor.getSession().selection.on('changeCursor', updateStatusBar);
@@ -123,12 +129,13 @@ var editor;
         });
 
         if (editorOptions) {
-            var fontSize = editorOptions.fontSize ? editorOptions.fontSize : '12';
-            var outputSelection = editorOptions.output ? editorOptions.output : 'html';
+            var fontSize = editorOptions.fontSize ? editorOptions.fontSize : '12',outputSelection = editorOptions.output ? editorOptions.output : 'html',
+                orientation = editorOptions.orientation ? editorOptions.orientation : 'vert';
 
             document.getElementById('editor').style.fontSize= fontSize + 'px';
             document.getElementsByClassName('editor-option-fontsize')[0].value = fontSize;
             document.getElementById('output_select').value = outputSelection;
+            $('body').addClass(orientation);
         }
     };
 
