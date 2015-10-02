@@ -15,7 +15,7 @@
   "homepage": "https://github.com/twslade/Magento-PHP-Console",
   "devDependencies": {
       "grunt": "*",
-      "autoprefixer-core": "*",
+      "autoprefixer": "*",
       "grunt-postcss": "*",
       "grunt-concurrent": "*",
       "grunt-contrib-uglify": "*",
