@@ -26,21 +26,26 @@ $black-90:                 darken($white, 90%);
 
 // Brand colors
 $brand-primary:           #428bca;
-$brand-success:           #5cb85c;
+$brand-success:           #B5BD68;
 $brand-warning:           #f0ad4e;
-$brand-danger:            #d9534f;
-$brand-info:              #5bc0de;
+$brand-danger:            #DF5F5F;
+$brand-info:              #81A2BE;
 
 // Scaffolding
-$body-background:         #fff;
-$text-color:              $black-50;
+$body-background:         #1d1f21;
+$body-background-light:   #25282c;
+$text-color:              #C5C8C6;
+$border-color:            darken($text-color, 50%);
+$btn-bg:                  $body-background-light;
+$btn-text:                $text-color;
+$btn-hover:               $brand-info;
 
 // Links
 $link-color:              $brand-primary;
 $link-color-hover:        darken($link-color, 15%);
 
 // Typography
-$font-family-sans-serif:  "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 $font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 $font-family-base:        $font-family-sans-serif;

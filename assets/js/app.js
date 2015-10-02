@@ -24,7 +24,11 @@ jQuery(document).ready(function ($) {
             this.appOptionsMenuFont();
             this.appOptionsMenuOutput();
             this.appOptionsMenuProjects();
+            this.appOptionsMenuOrientation();
             this.appOptionsMenu();
+            this.appSnippetsMenu();
+            this.setEditorHeights();
+            this.setObservers();
         },
 
         setObservers: function() {
@@ -49,6 +53,7 @@ jQuery(document).ready(function ($) {
         },
 
         appOptionsMenuFont: function() {
+            var self = this;
             $('.editor-option-fontsize').on('change', function (e) {
                 e.preventDefault();
                 var newFontSize = $(this).val();
@@ -57,6 +62,7 @@ jQuery(document).ready(function ($) {
 
                 EditorOptions.LocalStorageHelper.optionsObject.fontSize = newFontSize;
                 EditorOptions.LocalStorageHelper.setLocalStorage();
+                self.toggleMenu();
             });
         },
 
@@ -75,6 +81,26 @@ jQuery(document).ready(function ($) {
 
                 EditorOptions.LocalStorageHelper.optionsObject.output = selection;
                 EditorOptions.LocalStorageHelper.setLocalStorage();
+                self.toggleMenu();
+            });
+        },
+
+        appOptionsMenuOrientation: function() {
+            var self = this;
+            $('.options-editor').on('change', function(e){
+                e.preventDefault();
+                var selection = $(this).val();
+
+                if($(this).val() === "vert"){
+                    $('body').removeClass('vert hor').addClass('vert');
+                }else{
+                    $('body').removeClass('vert hor').addClass('hor');
+                }
+
+                EditorOptions.LocalStorageHelper.optionsObject.orientation = selection;
+                EditorOptions.LocalStorageHelper.setLocalStorage();
+                self.setEditorHeights();
+                self.toggleMenu();
             });
         },
 
@@ -85,10 +111,42 @@ jQuery(document).ready(function ($) {
         },
 
         appOptionsMenu: function() {
+            var self = this;
             $('.options-menu-icon').on('click', function(evt){
-                $(this).toggleClass('active');
-                $('.options-menu').toggleClass('active');
+                self.toggleMenu();
             });
+        },
+
+        appSnippetsMenu: function() {
+            $('.options-snippets-icon').on('click', function(evt){
+                $(this).toggleClass('active');
+                $('.options-snippets').toggleClass('active');
+            });
+        },
+
+        setEditorHeights: function() {
+            var windowHeight = $(window).height(),
+                windowWidth = $(window).width();
+
+            $('.vert .output-container').height(windowHeight - 32).width(windowWidth/2);
+            $('.vert .editor-container').height(windowHeight - 64).width(windowWidth/2);
+
+            $('.hor .output-container').height((windowHeight/2)-32).width(windowWidth);
+            $('.hor .editor-container').height((windowHeight/2)-64).width(windowWidth);
+        },
+
+        setObservers: function() {
+            var self = this;
+
+            $(window).on('resize load', function(){
+                self.setEditorHeights();
+            });
+
+        },
+
+        toggleMenu: function() {
+            $('.options-menu-icon').toggleClass('active');
+            $('.options-menu').toggleClass('active');
         },
 
         /**
@@ -111,17 +169,3 @@ jQuery(document).ready(function ($) {
     var phpConsoleApp = new PhpConsoleApp({"debug":false});
 
 });
-
-// $(document).ready(function() {
-    // $('#slideToggle').click(function() {
-    //     $('#expandable').slideToggle();
-    //     $('#expand-icon').toggleClass('icon-minus-sign');
-    // });
-
-    // $('#slideToggleSnippets').click(function() {
-    //     $('#expandable-snippets').slideToggle();
-    //     $('#expand-snippets-icon').toggleClass('icon-minus-sign');
-    // });
-
-    // $('.dropdown-toggle').dropdown();
-// });

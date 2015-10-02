@@ -34,8 +34,8 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
         Mage::setIsDeveloperMode(true);
         umask(0);
         Mage::app((array_key_exists('isAdmin', $params) && $params['isAdmin']) ? 'admin' : '');
-        $title = '<img src="' . Mage::getDesign()->getSkinUrl() . Mage::getStoreConfig('design/header/logo_src') .  '" /><br />';
-        $title .= (array_key_exists('site', $params) ? $params['site'] . ' (<a target="_blank" href="' . Mage::app()->getStore()->getBaseUrl() . '">' . Mage::app()->getStore()->getBaseUrl() . '</a>)': '');
+        $title = '<img src="' . Mage::getDesign()->getSkinUrl() . Mage::getStoreConfig('design/header/logo_src') .  '" />';
+        $title .= (array_key_exists('site', $params) ? ' <a target="_blank" href="' . Mage::app()->getStore()->getBaseUrl() . '">' . $params['site'] . '</a>': '');
     }
 
 
@@ -111,7 +111,7 @@ if (isset($_POST['code'])) {
     <title>Magento/Zend/PHP Debug Console</title>
     <link rel="stylesheet" type="text/css" href="./assets/styles/styles.css" />
     <link rel="stylesheet" type="text/css" href="./assets/js/google-code-prettify/prettify.css" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 </head>
 <body>
@@ -149,8 +149,8 @@ if (isset($_POST['code'])) {
                 <li>
                     <label for="options-editor">Editor Orientation?</label>
                     <select class="options-editor" name="options-editor">
-                        <option value="0">Horizontal</option>
-                        <option value="1">Vertical</option>
+                        <option value="hor">Horizontal</option>
+                        <option value="vert">Vertical</option>
                     </select>
                 </li>
             </ul>
@@ -210,14 +210,14 @@ if (isset($_POST['code'])) {
                             <param name="quality" value="high" />
                             <param name="scale" value="noscale" />
                             <param NAME="FlashVars" value="text=">
-                            <param name="bgcolor" value="#E8E8E8">
+                            <param name="bgcolor" value="#25282C">
                             <embed src="clippy/clippy.swf" width="110" height="14" name="clippy" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http:// www.macromedia.com/go/getflashplayer" FlashVars="text=" bgcolor="#E8E8E8" />
                             </object>
                         </span>
                     </div>
                 </div>
-                <input id="try-this" type="submit" name="subm" value="Try this!" class="btn btn-large btn-success" />
-                <input id="save-snippet" type="button" name="save-snippet" value="Save Snippet!" class="btn btn-primary" />
+                <input id="try-this" type="submit" name="subm" value="Run Snippet" class="btn btn-large btn-success" />
+                <input id="save-snippet" type="button" name="save-snippet" value="Save Snippet" class="btn btn-primary" />
             </form>
         </div>
 
