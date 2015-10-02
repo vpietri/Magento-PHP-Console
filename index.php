@@ -224,25 +224,33 @@ if (isset($_POST['code'])) {
         <div class="help-container">
             <button class="btn btn-help">Help?</button>
             <div class="help">
-                <pre>
-                    debug:
-                    &lt; foo()
-                    krumo(foo());
-                </pre>
-                <pre>
-                    commands:
-                    krumo::backtrace();
-                    krumo::includes();
-                    krumo::functions();
-                    krumo::classes();
-                    krumo::defines();
-                </pre>
-                <pre>
-                    misc:
-                    press ctrl-enter to submit
-                    put '#\n' on the first line to enforce
-                    \n line breaks (\r\n etc work too)
-                </pre>
+                <ul>
+                    <li>
+                        <h4>debug:</h4>
+                        <p>
+                            &lt; foo()<br/>
+                            krumo(foo());
+                        </p>
+                    </li>
+                    <li>
+                        <h4>commands:</h4>
+                        <p>
+                            krumo::backtrace();<br/>
+                            krumo::includes();<br/>
+                            krumo::functions();<br/>
+                            krumo::classes();<br/>
+                            krumo::defines();
+                        </p>
+                    </li>
+                    <li>
+                        <h4>misc:</h4>
+                        <p>
+                            press ctrl + enter (&#8984; + return) to submit<br/>
+                            put '#\n' on the first line to enforce<br/>
+                            \n line breaks (\r\n etc work too)
+                        </p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

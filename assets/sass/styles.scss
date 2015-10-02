@@ -4,6 +4,11 @@
 
 * { box-sizing: border-box; }
 
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
 a {
     text-decoration: none;
     color: #fff;
@@ -85,12 +90,6 @@ input {
     margin-bottom: -4px;
 }
 
-.help {
-    width: 33%;
-    float: left;
-    white-space: pre;
-}
-
 pre.prettyprint {
     margin: 10px 0 0;
     padding: 0;
@@ -132,7 +131,7 @@ xmp {
     background: $btn-bg;
     color: $btn-text;
     border: 0;
-    font: normal 16px/32px $font-family-base;
+    font: bold 16px/32px $font-family-base;
     letter-spacing: 2px;
     text-transform: uppercase;
     padding: 0;
@@ -162,9 +161,11 @@ header {
 }
 
 .brand {
-    font: normal 12px/32px $font-family-base;
+    font: normal 14px/32px $font-family-base;
     color: $text-color;
-    text-shadow: 1px 1px 0 #000;
+    text-shadow: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .options {
@@ -215,6 +216,7 @@ header {
     border-bottom: 0;
     padding: 0 10px;
     cursor: pointer;
+    text-transform: uppercase;
     &:hover, &.active {
         background: $body-background-light;
     }
@@ -325,7 +327,58 @@ header {
     }
 }
 
-.help-container {
-    display: none;
+.help-container { 
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    .help {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        display: none;
+        list-style: none;
+        padding: 5px;
+        margin: 0;
+        ul {
+            list-style: none;
+            float: left;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            float: left;
+            width: 33%;
+            display: block;
+        }
+        p {
+            font-family: $font-family-monospace;
+            font-weight: bold;
+        }
+        h4 {
+            font: bold 14px/normal $font-family-base;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    }
+    .btn-help {
+        font-size: 14px;
+        line-height: 20px;
+        height: 20px;
+        padding: 0 10px;
+    }
+    &.active {
+        color: $body-background;
+        .btn-help {
+            background: $brand-info;
+            color: $body-background;
+        }
+        .help {
+            bottom: 20px;
+            display: block;
+            width: 50%;
+            background: $brand-info;
+        }
+    }
 }
 /*#code-form { display: none; }*/

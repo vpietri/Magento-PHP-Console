@@ -433,6 +433,10 @@ th {
 * {
   box-sizing: border-box; }
 
+:focus {
+  outline-color: transparent;
+  outline-style: none; }
+
 a {
   text-decoration: none;
   color: #fff;
@@ -501,11 +505,6 @@ input {
 .output img.loader {
   margin-bottom: -4px; }
 
-.help {
-  width: 33%;
-  float: left;
-  white-space: pre; }
-
 pre.prettyprint {
   margin: 10px 0 0;
   padding: 0;
@@ -542,7 +541,7 @@ xmp {
   background: #25282c;
   color: #C5C8C6;
   border: 0;
-  font: normal 16px/32px "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: bold 16px/32px "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 0; }
@@ -568,9 +567,11 @@ header {
   height: 32px; }
 
 .brand {
-  font: normal 12px/32px "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: normal 14px/32px "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #C5C8C6;
-  text-shadow: 1px 1px 0 #000; }
+  text-shadow: none;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
 
 .options {
   float: right;
@@ -613,7 +614,8 @@ header {
   border-top: 0;
   border-bottom: 0;
   padding: 0 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  text-transform: uppercase; }
   .options-menu-icon:hover,
   .options-menu-icon.active,
   .options-snippets-icon:hover, .options-snippets-icon.active {
@@ -705,7 +707,49 @@ header {
     bottom: 0; }
 
 .help-container {
-  display: none; }
+  position: fixed;
+  right: 0;
+  bottom: 0; }
+  .help-container .help {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: none;
+    list-style: none;
+    padding: 5px;
+    margin: 0; }
+    .help-container .help ul {
+      list-style: none;
+      float: left;
+      width: 100%;
+      margin: 0;
+      padding: 0; }
+    .help-container .help li {
+      float: left;
+      width: 33%;
+      display: block; }
+    .help-container .help p {
+      font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+      font-weight: bold; }
+    .help-container .help h4 {
+      font: bold 14px/normal "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+  .help-container .btn-help {
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    padding: 0 10px; }
+  .help-container.active {
+    color: #1d1f21; }
+    .help-container.active .btn-help {
+      background: #81A2BE;
+      color: #1d1f21; }
+    .help-container.active .help {
+      bottom: 20px;
+      display: block;
+      width: 50%;
+      background: #81A2BE; }
 
 /*#code-form { display: none; }*/
 /*# sourceMappingURL=styles.css.map */
