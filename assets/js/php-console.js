@@ -129,7 +129,8 @@ var editor;
         });
 
         if (editorOptions) {
-            var fontSize = editorOptions.fontSize ? editorOptions.fontSize : '12',outputSelection = editorOptions.output ? editorOptions.output : 'html',
+            var fontSize = editorOptions.fontSize ? editorOptions.fontSize : '12',
+                outputSelection = editorOptions.output ? editorOptions.output : 'html',
                 orientation = editorOptions.orientation ? editorOptions.orientation : 'vert';
 
             document.getElementById('editor').style.fontSize= fontSize + 'px';

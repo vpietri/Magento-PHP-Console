@@ -27,6 +27,7 @@ jQuery(document).ready(function ($) {
             this.appOptionsMenuOrientation();
             this.appOptionsMenu();
             this.appSnippetsMenu();
+            this.appHelpMenu();
             this.setEditorHeights();
             this.setObservers();
         },
@@ -67,6 +68,7 @@ jQuery(document).ready(function ($) {
         },
 
         appOptionsMenuOutput: function() {
+            var self = this;
             $('#output_select').on('change', function (e) {
                 e.preventDefault();
                 var selection = $(this).val();
@@ -81,7 +83,6 @@ jQuery(document).ready(function ($) {
 
                 EditorOptions.LocalStorageHelper.optionsObject.output = selection;
                 EditorOptions.LocalStorageHelper.setLocalStorage();
-                self.toggleMenu();
             });
         },
 
@@ -121,6 +122,13 @@ jQuery(document).ready(function ($) {
             $('.options-snippets-icon').on('click', function(evt){
                 $(this).toggleClass('active');
                 $('.options-snippets').toggleClass('active');
+            });
+        },
+
+        appHelpMenu: function() {
+            $('.btn-help').on('click', function(evt){
+                evt.preventDefault();
+                $('.help-container').toggleClass('active');
             });
         },
 
