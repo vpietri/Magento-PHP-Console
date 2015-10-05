@@ -61,6 +61,10 @@ input {
             height: 100%;
             overflow-y: scroll;
             border: 0;
+            a {
+                text-shadow: none;
+                color: blue;
+            }
         }
     }
 }

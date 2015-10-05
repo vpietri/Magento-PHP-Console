@@ -484,6 +484,9 @@ input {
       height: 100%;
       overflow-y: scroll;
       border: 0; }
+      .output.error pre a {
+        text-shadow: none;
+        color: blue; }
 
 .statusbar {
   padding: 0 5px;
