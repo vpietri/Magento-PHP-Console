@@ -188,9 +188,11 @@ if (isset($_POST['code'])) {
         <div id="messages" class="messages"></div>
 
         <div class="output-container">
-            <div class="site-logo">
-                <?php echo ($title != '') ? $title . '<a class="" href="./index.php"><i class="icon icon-remove-sign"></i></a>' : ''; ?>
-            </div>
+            <?php if($siteDirectory): ?>
+                <div class="site-logo">
+                    <?php echo ($title != '') ? $title . '<a class="" href="./index.php"><i class="icon icon-remove-sign"></i></a>' : ''; ?>
+                </div>
+            <?php endif; ?>
             <div class="output xmp" style="display: none;"><xmp><?php echo $debugOutput ?></xmp></div>
             <div class="output pre"><pre><?php echo $debugOutput ?></pre></div>
             <div class="output error" style="display: none;"><pre><?php echo $debugOutput ?></pre></div>
@@ -203,17 +205,6 @@ if (isset($_POST['code'])) {
                     <textarea class="editor" id="editor" name="code"></textarea>
                     <div class="statusbar">
                         <span class="position">Line: 1, Column: 1</span>
-                        <span class="copy">
-                            Copy selection: <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy">
-                            <param name="movie" value="clippy/clippy.swf"/>
-                            <param name="allowScriptAccess" value="always" />
-                            <param name="quality" value="high" />
-                            <param name="scale" value="noscale" />
-                            <param NAME="FlashVars" value="text=">
-                            <param name="bgcolor" value="#25282C">
-                            <embed src="clippy/clippy.swf" width="110" height="14" name="clippy" quality="high" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http:// www.macromedia.com/go/getflashplayer" FlashVars="text=" bgcolor="#E8E8E8" />
-                            </object>
-                        </span>
                     </div>
                 </div>
                 <input id="try-this" type="submit" name="subm" value="Run Snippet" class="btn btn-large btn-success" />

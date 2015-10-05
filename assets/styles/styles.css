@@ -433,6 +433,15 @@ th {
 * {
   box-sizing: border-box; }
 
+pre {
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word; }
+
 :focus {
   outline-color: transparent;
   outline-style: none; }
@@ -467,8 +476,8 @@ input {
     color: #000; }
     .output.error pre {
       position: absolute;
-      margin: 0;
-      padding: 0;
+      margin: 0 10px 0 0;
+      padding: 10px;
       left: 0;
       top: 0;
       width: 100%;
@@ -483,18 +492,9 @@ input {
   bottom: 0;
   width: 100%;
   height: 20px; }
-  .statusbar .position, .statusbar .copy {
+  .statusbar .position {
     float: left;
     line-height: 20px; }
-
-.statusbar .copy {
-  margin-left: 50px; }
-
-#clippy {
-  position: relative;
-  display: inline-block;
-  top: 2px;
-  left: 5px; }
 
 /* ace-editor requires to define styles by id (specificity) */
 .editor#editor {
