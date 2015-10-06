@@ -139,7 +139,15 @@ var editor;
             document.getElementById('editor').style.fontSize= fontSize + 'px';
             document.getElementsByClassName('editor-option-fontsize')[0].value = fontSize;
             document.getElementById('output_select').value = outputSelection;
+            
             $('body').addClass(orientation);
+            
+            if(orientation === 'hor'){
+                $('.options-editor option[value="hor"]').attr('selected','selected');
+            }else{
+                $('.options-editor option[value="vert"]').attr('selected','selected');
+            }
+            appDropdowns.updateShivs();
         }
     };
 

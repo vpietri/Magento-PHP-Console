@@ -5,6 +5,8 @@
  * @copyright   Copyright © 2015 Blue Acorn.
  */
 
+var appDropdowns;
+
 function DropDowns(options) {
     this.init(options);
 }
@@ -115,6 +117,6 @@ jQuery(document).ready(function ($) {
      * The parameter object is optional.
      * Must be an object.
      */
-    var appDropdowns = new DropDowns({"debug":false});
+    appDropdowns = new DropDowns({"debug":false});
 
 });
