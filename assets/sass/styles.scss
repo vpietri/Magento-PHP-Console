@@ -69,6 +69,11 @@ input {
     }
 }
 
+.xdebug-error, .xe-warning {
+    background: $white;
+    color: $black;
+}
+
 
 .statusbar {
     padding: 0 5px;

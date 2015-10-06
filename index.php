@@ -1,6 +1,7 @@
 <?php
 ini_set('memory_limit', '1G');
 ini_set('display_errors', 1);
+error_reporting(E_ALL | E_STRICT);
 
 $options = array(
     // which string should represent a tab for indentation
@@ -62,9 +63,6 @@ if (!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'), true)) {
 
 define('PHP_CONSOLE_VERSION', '1.3.0-dev');
 require 'krumo/class.krumo.php';
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL | E_STRICT);
 
 $debugOutput = '';
 
@@ -149,8 +147,8 @@ if (isset($_POST['code'])) {
                 <li>
                     <label for="options-editor">Editor Orientation?</label>
                     <select class="options-editor" name="options-editor">
-                        <option value="hor">Horizontal</option>
                         <option value="vert">Vertical</option>
+                        <option value="hor">Horizontal</option>
                     </select>
                 </li>
             </ul>

@@ -75,7 +75,7 @@ var editor;
         var params = '?js=1&' + window.location.href.slice(window.location.href.indexOf('?') + 1) + '&isAdmin=' + ($('#run_as_admin').is(':checked') ? '0' : '1');
 
         $.post(params, { code: editor.getSession().getValue() }, function(res) {
-            if (res.match(/#end-php-console-output#$/)) {
+            if (res.match(/#end-php-console-output#$/) && !res.match('xdebug-error')) {
                 $('div.output.xmp').html('<xmp class="prettyprint linenums">' + res.substring(0, res.length-24) + '</xmp>');
                 $('div.output.pre').html('<pre class="prettyprint linenums">' + res.substring(0, res.length-24) + '</pre>');
             } else {
@@ -106,6 +106,9 @@ var editor;
         // tab size
         editor.getSession().setTabSize(options.tabsize);
         editor.getSession().setUseSoftTabs(true);
+        editor.setOptions({
+            wrap: true
+        });
 
         // Theme
         

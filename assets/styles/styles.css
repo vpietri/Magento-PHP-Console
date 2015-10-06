@@ -488,6 +488,10 @@ input {
         text-shadow: none;
         color: blue; }
 
+.xdebug-error, .xe-warning {
+  background: #fff;
+  color: #000; }
+
 .statusbar {
   padding: 0 5px;
   background: #25282c;
