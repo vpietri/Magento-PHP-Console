@@ -197,15 +197,6 @@ if (isset($_POST['code'])) {
     </div>
     <div class="row">
         <div class="span12">
-            <label for="output_select">Output:</label>
-            <select id="output_select">
-                <option value="html">HTML</option>
-                <option value="text">Text</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span12">
             <div class="output xmp" style="display: none;"><xmp><?php echo $debugOutput ?></xmp></div>
             <div class="output pre"><pre><?php echo $debugOutput ?></pre></div>
             <div class="output error" style="display: none;"><pre><?php echo $debugOutput ?></pre></div>
@@ -219,33 +210,30 @@ if (isset($_POST['code'])) {
                     <textarea class="editor" id="editor" name="code"></textarea>
                     <div class="statusbar">
                         <span class="position">Line: 1, Column: 1</span>
-                    <span class="copy">
-                        Copy selection: <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="110" height="14" id="clippy">
-                        <param name="movie" value="clippy/clippy.swf"/>
-                        <param name="allowScriptAccess" value="always" />
-                        <param name="quality" value="high" />
-                        <param name="scale" value="noscale" />
-                        <param NAME="FlashVars" value="text=">
-                        <param name="bgcolor" value="#E8E8E8">
-                        <embed src="clippy/clippy.swf"
-                               width="110"
-                               height="14"
-                               name="clippy"
-                               quality="high"
-                               allowScriptAccess="always"
-                               type="application/x-shockwave-flash"
-                               pluginspage="http://www.macromedia.com/go/getflashplayer"
-                               FlashVars="text="
-                               bgcolor="#E8E8E8"
-                            />
-                    </object>
-                    </span>
                     </div>
                 </div>
                 <input id="try-this" type="submit" name="subm" value="Try this!" class="btn btn-large btn-success" />
                 <input id="save-snippet" type="button" name="save-snippet" value="Save Snippet!" class="btn btn-primary" />
             </form>
         </div>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <label for="output_select">Output:</label>
+            <select id="output_select">
+                <option value="html">HTML</option>
+                <option value="text">Text</option>
+            </select>
+        </div>
+        <div class="span4">
+            <label for="editor_fontsize">Editor Font Size:</label>
+            <select id="editor_fontsize" class="editor-option-fontsize">
+                <?php for ($i = 10; $i <= 24; $i++) { ?>
+                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php } ?>
+            </select>
+        </div>
+
     </div>
     <div class="row">
         <div class="span4">
@@ -273,14 +261,6 @@ if (isset($_POST['code'])) {
                 \n line breaks (\r\n etc work too)
             </div>
         </div>
-    </div>
-    <div class="editor-options">
-        Editor Font Size
-        <select class="editor-option-fontsize">
-            <?php for ($i = 10; $i <= 24; $i++) { ?>
-                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-            <?php } ?> 
-        </select>
     </div>
 </div>
 

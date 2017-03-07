@@ -5,7 +5,7 @@ class Projects {
     protected $_directory;
     protected $_colCount = 3;
 
-
+/*
     public function __construct(){
         $this->_directory = realpath(dirname(__FILE__) . '/../../../') . '/';
     }
@@ -19,8 +19,17 @@ class Projects {
         }
         return $this->_directory . $siteName . '/';
     }
+*/
 
 
+    public function __construct(){
+        $this->_directory = realpath(dirname(__FILE__) . '/../../../magento/') . '/';
+    }
+
+    public function getDirectoryFromSiteName($siteName = null){
+        return ($siteName) ? $this->_directory . $siteName . '/' : false;
+    }
+    
     public function getProjectsArray($dir = null){
     
         $dirArray = array();
