@@ -17,7 +17,12 @@ $get = new Get();
 $params = $get->getParams();
 
 $commandLine = new CommandLine();
-$projects = new Projects();
+
+
+//Set Projects Root
+$rootProjectDir = dirname(dirname(__DIR__));
+
+$projects = new Projects($rootProjectDir);
 
 
 $projectsList = $title = $errors = '';
@@ -29,6 +34,7 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
     $siteDirectory = $projects->getDirectoryFromSiteName($site);
 
     $mageFile = $siteDirectory . 'app/Mage.php';
+    $mage2File = $siteDirectory . 'app/bootstrap.php';
     if(file_exists($mageFile)){
         require_once $mageFile;
         Varien_Profiler::enable();
@@ -37,6 +43,18 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
         Mage::app((array_key_exists('isAdmin', $params) && $params['isAdmin']) ? 'admin' : '');
         $title = '<img src="' . Mage::getDesign()->getSkinUrl() . Mage::getStoreConfig('design/header/logo_src') .  '" /><br />';
         $title .= (array_key_exists('site', $params) ? $params['site'] . ' (<a target="_blank" href="' . Mage::app()->getStore()->getBaseUrl() . '">' . Mage::app()->getStore()->getBaseUrl() . '</a>)': '');
+    } elseif (file_exists($mage2File)){
+        require $mage2File;
+        $bootstrap = \Magento\Framework\App\Bootstrap::create($siteDirectory, $_SERVER);
+        $app = $bootstrap->createApplication(\Magento\Framework\App\Http::class);
+
+        $obj = $bootstrap->getObjectManager();
+        $state = $obj->get('Magento\Framework\App\State');
+        $areaCode = (array_key_exists('isAdmin', $params) && $params['isAdmin']) ? 'adminhtml' : 'frontend';
+        $state->setAreaCode($areaCode);
+
+        $title = array_key_exists('site', $params) ? $params['site'] : $siteDirectory;
+
     }
 
 
@@ -54,7 +72,8 @@ if(array_key_exists('a', $params) && $params['a'] == 'debug' && array_key_exists
  *
  * Source on Github http://github.com/Seldaek/php-console
  */
-if (!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'), true)) {
+
+if (!in_array($_SERVER['REMOTE_ADDR'], array('127.0.0.1', '::1'), true) and strpos($_SERVER['REMOTE_ADDR'], '192.168.')===false) {
     if(!file_exists('remote.flag')) {
     	header('HTTP/1.1 401 Access unauthorized');
     	die('ERR/401 Go Away');

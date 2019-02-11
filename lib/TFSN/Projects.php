@@ -22,8 +22,15 @@ class Projects {
 */
 
 
-    public function __construct(){
-        $this->_directory = realpath(dirname(__FILE__) . '/../../../magento/') . '/';
+    public function __construct($baseDir = null)
+    {
+        if(empty($baseDir) || !file_exists($baseDir)) {
+            $this->_directory = dirname(dirname(dirname(__DIR__)));
+        } else {
+            $this->_directory = $baseDir;
+        }
+
+        $this->_directory = rtrim($this->_directory, '/') . '/';
     }
 
     public function getDirectoryFromSiteName($siteName = null){
